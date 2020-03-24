@@ -7,7 +7,7 @@ import openpyxl
 # wb.save('cases.xlsx')
 # 读取excel中的数据
 # 第一步：打开工作簿
-wb = openpyxl.load_workbook('cases.xlsx')
+wb = openpyxl.load_workbook('com/nibudon/excel/cases.xlsx')
 # 第二步：选取表单
 sh = wb['python_demo']
 # 第三步：读取数据

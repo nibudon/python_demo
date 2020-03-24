@@ -43,7 +43,7 @@ class ReadExcel(object):
             cases.append(case_obj)
         return cases
 if  __name__ == '__main__':
-    r = ReadExcel('cases.xlsx','python_demo')
+    r = ReadExcel('cases.xlsx', 'python_demo')
     res = r.read_data_obj()
     for i in res:
         print(i.caseid, i.excepted, i.data)

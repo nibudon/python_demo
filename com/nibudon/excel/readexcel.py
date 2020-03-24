@@ -43,6 +43,6 @@ class ReadExcel(object): #读取excel数据的类
                 cases.append(case_data)
         return cases
 if __name__ == '__main__':
-    r = ReadExcel('cases.xlsx','python_demo')
+    r = ReadExcel('cases.xlsx', 'python_demo')
     data1 = r.read_data_line()
     print(data1)
