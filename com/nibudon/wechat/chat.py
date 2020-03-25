@@ -46,33 +46,35 @@ import itchat
 # itchat.run(True)
 
 '''4、定时发送消息，消息内容为txt文件中内容'''
-# def readTxt():
-#     f_path = r'msg.txt'
-#     list = []
-#     with open(f_path, encoding="utf-8") as f:
-#         for line in f:
-#             list.append(line)
-#         return list
-#
-# itchat.auto_login(enableCmdQR=2)
-# print("登录成功")
-# msg = readTxt()[0]
-# sendTime = '2020-03-24 21:30:00'
-# localtime = time.strptime(sendTime,"%Y-%m-%d %H:%M:%S")
-# # 获取指定时间戳，时间戳 x 1000 = 毫秒数
-# tt = time.mktime(localtime)
-# users=itchat.search_friends("倪卟懂哦")
-# userName= users[0]['UserName']
-# hasSend = False;
-# while True:
-#     now = time.time()
-#     if now >= tt and now < tt + 10:
-#         if not hasSend:
-#             print(now)
-#             itchat.send(msg, toUserName=userName)
-#             hasSend = True
-#             print("消息发送成功")
-#     sleep(1)
+def readTxt():
+    f_path = r'msg.txt'
+    list = []
+    with open(f_path, encoding="utf-8") as f:
+        for line in f:
+            list.append(line)
+        return list
+
+# itchat.auto_login(enableCmdQR=2,hotReload=True)
+itchat.auto_login(hotReload=True)
+print("登录成功")
+msg = readTxt()[0]
+sendTime = '2020-03-25 13:45:00'
+localtime = time.strptime(sendTime,"%Y-%m-%d %H:%M:%S")
+# 获取指定时间戳，时间戳 x 1000 = 毫秒数
+tt = time.mktime(localtime)
+users=itchat.search_friends("倪卟懂")
+userName= users[0]['UserName']
+hasSend = False;
+while True:
+    now = time.time()
+    itchat.auto_login(hotReload=True)
+    if now >= tt and now < tt + 10:
+        if not hasSend:
+            print(now)
+            itchat.send(msg, toUserName=userName)
+            hasSend = True
+            print("消息发送成功")
+    sleep(1)
 
 
 
@@ -93,28 +95,31 @@ def readTxt2():
 # itchat.auto_login()
 # itchat.auto_login(enableCmdQR=1)
 
-itchat.auto_login(enableCmdQR=2)
-print("登录成功")
-msg = readTxt2()[0]
-groupName = '随便'
-sendTime = '2020-03-24 21:50:00'
-localtime = time.strptime(sendTime,"%Y-%m-%d %H:%M:%S")
-# 获取指定时间戳，时间戳 x 1000 = 毫秒数
-tt = time.mktime(localtime)
-hasSend = False;
-myroom = itchat.search_chatrooms(name=groupName)
-for room in myroom:
-    # NickName 获取群名称
-    if room['NickName'] == groupName:
-        while True:
-            now = time.time()
-            if now >= tt and now < tt + 10:
-                if not hasSend:
-                    # UserName 获取群UUID 根据ID发送信息
-                    username = room['UserName']
-                    # send_msg 发送信息 参数：信息内容，uid
-                    itchat.send_msg(msg, username)
-                    hasSend = True
-                    print("消息发送成功")
-    else:
-        print('No groups found')
+
+# itchat.auto_login(enableCmdQR=2)
+# print("登录成功")
+# msg = readTxt2()[0]
+# groupName = '随便'
+# sendTime = '2020-03-25 21:50:00'
+# localtime = time.strptime(sendTime,"%Y-%m-%d %H:%M:%S")
+# # 获取指定时间戳，时间戳 x 1000 = 毫秒数
+# tt = time.mktime(localtime)
+# hasSend = False;
+# myroom = itchat.search_chatrooms(name=groupName)
+# for room in myroom:
+#     # NickName 获取群名称
+#     if room['NickName'] == groupName:
+#         while True:
+#             now = time.time()
+#             itchat.auto_login(hotReload=True)
+#             if now >= tt and now < tt + 10:
+#                 if not hasSend:
+#                     # UserName 获取群UUID 根据ID发送信息
+#                     username = room['UserName']
+#                     # send_msg 发送信息 参数：信息内容，uid
+#                     itchat.send_msg(msg, username)
+#                     hasSend = True
+#                     print("消息发送成功")
+#             sleep(1)
+#     else:
+#         print('No groups found')
