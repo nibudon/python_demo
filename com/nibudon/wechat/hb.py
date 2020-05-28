@@ -2,7 +2,6 @@ import itchat
 import pygame
 
 '''声音提示'''
-
 def voice ():
     pygame.mixer.init()
     pygame.mixer.music.load('voice.mp3')
