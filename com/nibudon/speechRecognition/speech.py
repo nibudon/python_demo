@@ -13,8 +13,11 @@ def voice2Text(file_name):
         content = r.recognize_google(audio, language='zh-CN')
         # print("Google Speech Recognition:" + content)
     except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand audio")
+        print("Google Speech Recognition could not under54stand audio")
     except sr.RequestError as e:
         print("Google Speech Recognition error; {0}".format(e))
 
     return content or '无法翻译'
+
+if __name__ == '__main__':
+    voice2Text(r'C:\Users\Administrator\Desktop\hello.wav')

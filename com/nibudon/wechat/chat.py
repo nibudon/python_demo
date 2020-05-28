@@ -54,15 +54,15 @@ def readTxt():
             list.append(line)
         return list
 
-# itchat.auto_login(enableCmdQR=2,hotReload=True)
-itchat.auto_login(hotReload=True)
+# itchat.auto_login(hotReload=True)
+itchat.auto_login(enableCmdQR=2,hotReload=True)
 print("登录成功")
 msg = readTxt()[0]
-sendTime = '2020-03-25 13:45:00'
+sendTime = '2020-03-26 07:41:00'
 localtime = time.strptime(sendTime,"%Y-%m-%d %H:%M:%S")
 # 获取指定时间戳，时间戳 x 1000 = 毫秒数
 tt = time.mktime(localtime)
-users=itchat.search_friends("倪卟懂")
+users=itchat.search_friends("倪卟懂哦")
 userName= users[0]['UserName']
 hasSend = False;
 while True:
@@ -123,3 +123,15 @@ def readTxt2():
 #             sleep(1)
 #     else:
 #         print('No groups found')
+
+'''附件的发送与下载'''
+# @itchat.msg_register([PICTURE, RECORDING, ATTACHMENT, VIDEO])
+# def download_files(msg):
+#     msg.download(msg.fileName)
+#     itchat.send('@%s@%s' % (
+#         'img' if msg['Type'] == 'Picture' else 'fil', msg['FileName']),
+#         msg['FromUserName'])
+#     return '%s received' % msg['Type']
+#
+# itchat.auto_login()
+# itchat.run()
